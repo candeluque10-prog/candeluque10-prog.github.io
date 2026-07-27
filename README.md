@@ -1,4 +1,4 @@
-# candeluque10-prog.github.io
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -190,7 +190,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Rubro 1 -->
                 <div class="bg-brand-light rounded-xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition group">
                     <div class="h-48 overflow-hidden relative bg-amber-900/10 flex items-center justify-center">
                         <i class="fa-solid fa-utensils text-5xl text-brand-accent group-hover:scale-110 transition duration-300"></i>
@@ -203,7 +202,6 @@
                     </div>
                 </div>
 
-                <!-- Rubro 2 -->
                 <div class="bg-brand-light rounded-xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition group">
                     <div class="h-48 overflow-hidden relative bg-blue-900/10 flex items-center justify-center">
                         <i class="fa-solid fa-laptop-code text-5xl text-brand-accent group-hover:scale-110 transition duration-300"></i>
@@ -216,7 +214,6 @@
                     </div>
                 </div>
 
-                <!-- Rubro 3 -->
                 <div class="bg-brand-light rounded-xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition group">
                     <div class="h-48 overflow-hidden relative bg-purple-900/10 flex items-center justify-center">
                         <i class="fa-solid fa-bag-shopping text-5xl text-brand-accent group-hover:scale-110 transition duration-300"></i>
@@ -319,7 +316,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Módulo 1 -->
                 <div class="bg-brand-light p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col justify-between">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
@@ -336,7 +332,6 @@
                     </div>
                 </div>
 
-                <!-- Módulo 2 -->
                 <div class="bg-brand-light p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col justify-between">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
@@ -353,7 +348,6 @@
                     </div>
                 </div>
 
-                <!-- Módulo 3 -->
                 <div class="bg-brand-light p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col justify-between">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
@@ -370,7 +364,6 @@
                     </div>
                 </div>
 
-                <!-- Módulo 4 -->
                 <div class="bg-brand-light p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col justify-between">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
@@ -711,13 +704,11 @@
             countdownEl.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
         }, 1000);
 
-        // Detectar retorno automático desde Mercado Pago (ej: ?status=approved o ?collection_status=approved)
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const status = urlParams.get('status') || urlParams.get('collection_status');
             if (status === 'approved' || status === 'success') {
                 openDownloadPortal();
-                // Autocompletar simulación de éxito
                 document.getElementById('payment-code').value = "MP-APPROVED-AUTO";
                 document.getElementById('payer-email').value = "comprador@mercadopago.com.ar";
                 verifyPaymentAndUnlock();
@@ -772,7 +763,6 @@
 
         function downloadRealPDF(e) {
             e.preventDefault();
-            // Contenido simulado del PDF oficial integrado para descarga directa en el navegador
             const pdfContent = `GUÍA PASO A PASO PARA EMPRENDER DESDE CERO
 --------------------------------------------------
 De la idea a tu primera venta, sin perder plata en el camino.
@@ -806,7 +796,6 @@ MÓDULO 4: Mentalidad, Organización y Constancia
             link.download = 'GUIA_Paso_a_Paso_para_Emprender_desde_Cero.pdf';
             link.click();
             
-            alert("¡Descarga de la guía completada con éxito!");
             closeDownloadPortal();
         }
 
