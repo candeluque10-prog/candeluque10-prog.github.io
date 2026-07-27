@@ -632,13 +632,13 @@
                     <input type="email" id="payer-email" class="w-full px-4 py-3 rounded-xl bg-brand-bg border border-brand-border text-sm focus:outline-none focus:border-brand-accent" placeholder="tu@correo.com">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold uppercase mb-1">Código de Operación o ID de Pago (MP)</label>
-                    <input type="text" id="payment-code" class="w-full px-4 py-3 rounded-xl bg-brand-bg border border-brand-border text-sm focus:outline-none focus:border-brand-accent" placeholder="Ej. #1289456789 o escribe 'TEST-APPROVED'">
+                    <label class="block text-xs font-bold uppercase mb-1">Clave de Acceso Secreta (enviada por Mercado Pago)</label>
+                    <input type="password" id="payment-code" class="w-full px-4 py-3 rounded-xl bg-brand-bg border border-brand-border text-sm focus:outline-none focus:border-brand-accent" placeholder="Ingresa tu clave secreta de compra">
                 </div>
                 
                 <div id="verification-error" class="hidden p-3 bg-red-100 border border-red-300 text-red-800 text-xs rounded-xl flex items-start gap-2">
                     <i class="fa-solid fa-triangle-exclamation mt-0.5"></i>
-                    <span id="error-message-text">No se encontró ningún pago aprobado asociado a estos datos.</span>
+                    <span id="error-message-text">Clave de acceso incorrecta.</span>
                 </div>
 
                 <button onclick="verifyPaymentAndUnlock()" class="w-full py-3.5 rounded-full bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-sm font-bold shadow-md">
@@ -704,13 +704,18 @@
             countdownEl.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
         }, 1000);
 
+        // Clave secreta que únicamente reciben los compradores
+        const SECRET_KEY = "EMPRENDE2026";
+
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            const status = urlParams.get('status') || urlParams.get('collection_status');
-            if (status === 'approved' || status === 'success') {
+            const key = urlParams.get('key') || urlParams.get('pass') || urlParams.get('clave');
+            
+            // Solo abre automáticamente si el enlace incluye la clave secreta correcta (?key=EMPRENDE2026)
+            if (key && key.toUpperCase() === SECRET_KEY) {
                 openDownloadPortal();
-                document.getElementById('payment-code').value = "MP-APPROVED-AUTO";
-                document.getElementById('payer-email').value = "comprador@mercadopago.com.ar";
+                document.getElementById('payment-code').value = SECRET_KEY;
+                document.getElementById('payer-email').value = "cliente@mercadopago.com.ar";
                 verifyPaymentAndUnlock();
             }
         });
@@ -749,14 +754,13 @@
                 return;
             }
 
-            const isApprovedTest = codeInput.toUpperCase().includes('APPROVED') || (codeInput.length >= 6 && !codeInput.includes('00000'));
-
-            if(isApprovedTest) {
+            // Verifica si la contraseña ingresada coincide con la clave secreta
+            if(codeInput.toUpperCase() === SECRET_KEY) {
                 errorBox.classList.add('hidden');
                 document.getElementById('payment-check-form').classList.add('hidden');
                 document.getElementById('download-success-box').classList.remove('hidden');
             } else {
-                errorText.textContent = "No se detectó un pago aprobado con los datos ingresados. Si el pago está pendiente o fue rechazado, la descarga no está permitida.";
+                errorText.textContent = "La clave de acceso ingresada es incorrecta. Revisa el mensaje o correo de confirmación enviado tras tu compra en Mercado Pago.";
                 errorBox.classList.remove('hidden');
             }
         }
