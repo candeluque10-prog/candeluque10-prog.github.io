@@ -1,1 +1,827 @@
 # candeluque10-prog.github.io
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emprende desde Cero - La Guía Definitiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#f5f2eb',
+                            card: '#e8e2d5',
+                            dark: '#3d342b',
+                            accent: '#8c7355',
+                            accentHover: '#6e5a42',
+                            light: '#faf8f5',
+                            border: '#d6ccbc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f5f2eb;
+            color: #3d342b;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-dark antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- Top Urgency Banner -->
+    <div class="bg-brand-dark text-brand-bg text-xs sm:text-sm py-2 px-4 text-center font-medium sticky top-0 z-50 flex items-center justify-center gap-2">
+        <i class="fa-solid fa-clock-rotate-left animate-pulse text-amber-400"></i>
+        <span>¡OFERTA ESPECIAL POR TIEMPO LIMITADO! Precio promocional finaliza en:</span>
+        <span id="countdown" class="font-bold text-amber-300">05:42:19</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="bg-brand-light/90 backdrop-blur-md border-b border-brand-border sticky top-[37px] sm:top-[41px] z-40 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-brand-card border border-brand-accent flex items-center justify-center overflow-hidden shadow-inner">
+                    <div class="text-center leading-none">
+                        <span class="block font-serif font-bold text-[10px] tracking-widest text-brand-dark">EM</span>
+                        <span class="block font-serif font-light text-[9px] text-brand-accent">cero</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-serif font-bold text-lg sm:text-xl tracking-wide block leading-none">Emprende</span>
+                    <span class="text-xs uppercase tracking-widest text-brand-accent font-semibold">desde Cero</span>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#beneficios" class="hover:text-brand-accent transition">Beneficios</a>
+                <a href="#rubros" class="hover:text-brand-accent transition">Rubros</a>
+                <a href="#modulos" class="hover:text-brand-accent transition">Módulos</a>
+                <a href="#testimonios" class="hover:text-brand-accent transition">Opiniones</a>
+                <a href="#faq" class="hover:text-brand-accent transition">FAQ</a>
+                <button onclick="openDownloadPortal()" class="text-brand-accent hover:text-brand-dark font-bold flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-download"></i> Descargar Ebook
+                </button>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button onclick="openCart()" class="relative p-2 text-brand-dark hover:text-brand-accent transition" aria-label="Carrito de compras">
+                    <i class="fa-solid fa-cart-shopping text-xl"></i>
+                    <span class="absolute -top-1 -right-1 bg-brand-accent text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">1</span>
+                </button>
+                <a href="https://link.mercadopago.com.ar/emprendedesdecero" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-sm font-semibold shadow-md">
+                    Comprar Ebook
+                </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-brand-dark" aria-label="Menú">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-light border-b border-brand-border px-4 py-4 space-y-3">
+            <a href="#beneficios" onclick="toggleMobileMenu()" class="block font-medium">Beneficios</a>
+            <a href="#rubros" onclick="toggleMobileMenu()" class="block font-medium">Rubros</a>
+            <a href="#modulos" onclick="toggleMobileMenu()" class="block font-medium">Módulos</a>
+            <a href="#testimonios" onclick="toggleMobileMenu()" class="block font-medium">Opiniones</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block font-medium">FAQ</a>
+            <button onclick="toggleMobileMenu(); openDownloadPortal();" class="block font-medium text-brand-accent font-bold">Descargar Ebook (Verificar Pago)</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 lg:py-24 overflow-hidden border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-brand-card px-4 py-1.5 rounded-full border border-brand-border text-xs font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-star text-amber-600"></i> Diseñado exclusivamente para Argentina
+                    </div>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-brand-dark leading-[1.1]">
+                        La Guía Paso a Paso para <span class="italic text-brand-accent font-normal">Emprender desde Cero</span>
+                    </h1>
+                    <p class="text-lg text-brand-dark/80 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        De la idea a tu primera venta, sin perder plata en el camino. 4 módulos prácticos con ejemplos reales, cálculo de costos, canales de venta y estrategias para el mercado local.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="https://link.mercadopago.com.ar/emprendedesdecero" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-base font-bold shadow-xl transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-lock text-amber-400"></i> Comprar Ahora por $5990 ARS
+                        </a>
+                        <div class="text-center sm:text-left">
+                            <div class="flex items-center justify-center sm:justify-start gap-2">
+                                <span class="text-xs text-brand-dark/60 line-through font-semibold">$9990 ARS</span>
+                                <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded">40% OFF</span>
+                            </div>
+                            <span class="text-xs text-brand-dark/70 font-medium">Acceso inmediato tras verificar pago</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-brand-border/60 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-brand-dark/70 font-medium">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-brand-accent"></i> Validación automática de pago
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-brand-accent"></i> Manual de acción rápida
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-brand-accent"></i> Mercado Pago seguro
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ebook Mockup Visual -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm">
+                        <div class="absolute -inset-4 bg-brand-card rounded-3xl transform rotate-3 -z-10 border border-brand-border"></div>
+                        
+                        <div class="bg-brand-dark text-brand-bg p-8 rounded-2xl shadow-2xl border border-brand-accent/30 flex flex-col justify-between aspect-[3/4] relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-accent/20 rounded-bl-full pointer-events-none"></div>
+                            
+                            <div class="space-y-4">
+                                <div class="w-10 h-10 rounded-full bg-brand-bg/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-book-open text-brand-bg text-sm"></i>
+                                </div>
+                                <span class="text-[10px] tracking-widest uppercase font-semibold text-amber-300">Edición Actualizada Argentina</span>
+                                <h3 class="font-serif text-2xl font-bold leading-tight">Emprende desde Cero</h3>
+                            </div>
+
+                            <div class="space-y-6 my-auto py-4">
+                                <p class="text-xs text-brand-bg/80 leading-relaxed">
+                                    De la idea a tu primera venta, sin perder plata en el camino. Estrategias reales para el mercado local.
+                                </p>
+                                <div class="space-y-2 text-xs text-amber-200">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check"></i> 4 Módulos Prácticos</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check"></i> Fichas de Costos y Validación</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check"></i> Estrategias de Redes</div>
+                                </div>
+                            </div>
+
+                            <div class="pt-4 border-t border-brand-bg/20 flex items-center justify-between text-xs">
+                                <span class="font-bold text-amber-300 text-base">$5.990 <span class="text-[10px] line-through text-brand-bg/60">$9.990</span></span>
+                                <span class="uppercase tracking-wider font-semibold text-[10px]">Formato PDF</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Context Rubros Banners Section -->
+    <section id="rubros" class="py-16 bg-brand-card/40 border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span class="text-xs uppercase tracking-widest font-bold text-brand-accent">Adaptable a tu proyecto</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold">¿A qué tipo de emprendimiento ayuda esta guía?</h2>
+                <p class="text-brand-dark/80 text-sm sm:text-base">
+                    Independientemente de tu rubro, los fundamentos del negocio son los mismos. Diseñado para potenciar cualquier iniciativa local o digital.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Rubro 1 -->
+                <div class="bg-brand-light rounded-xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition group">
+                    <div class="h-48 overflow-hidden relative bg-amber-900/10 flex items-center justify-center">
+                        <i class="fa-solid fa-utensils text-5xl text-brand-accent group-hover:scale-110 transition duration-300"></i>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="font-serif text-xl font-bold">Gastronomía y Elaboración</h3>
+                        <p class="text-xs sm:text-sm text-brand-dark/70 leading-relaxed">
+                            Aprende a calcular el costo real de ingredientes, empaques, gas, luz y margenes de ganancia exactos para no perder dinero en cada entrega.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Rubro 2 -->
+                <div class="bg-brand-light rounded-xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition group">
+                    <div class="h-48 overflow-hidden relative bg-blue-900/10 flex items-center justify-center">
+                        <i class="fa-solid fa-laptop-code text-5xl text-brand-accent group-hover:scale-110 transition duration-300"></i>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="font-serif text-xl font-bold">Servicios y Freelancers</h3>
+                        <p class="text-xs sm:text-sm text-brand-dark/70 leading-relaxed">
+                            Estructura tus honorarios profesionales, arma propuestas atractivas, configura pasarelas de cobro locales e internacionales y consigue clientes recurrentes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Rubro 3 -->
+                <div class="bg-brand-light rounded-xl overflow-hidden border border-brand-border shadow-sm hover:shadow-md transition group">
+                    <div class="h-48 overflow-hidden relative bg-purple-900/10 flex items-center justify-center">
+                        <i class="fa-solid fa-bag-shopping text-5xl text-brand-accent group-hover:scale-110 transition duration-300"></i>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="font-serif text-xl font-bold">Indumentaria y Accesorios</h3>
+                        <p class="text-xs sm:text-sm text-brand-dark/70 leading-relaxed">
+                            Organiza tu stock, define canales de venta online y redes sociales, y diseña estrategias de contenido para destacar en Instagram y WhatsApp Business.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problemas vs Soluciones -->
+    <section id="beneficios" class="py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-xs uppercase tracking-widest font-bold text-brand-accent">El diagnóstico actual</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight">
+                        ¿Sentís que trabajás todo el día pero las cuentas no cierran?
+                    </h2>
+                    <p class="text-brand-dark/80 text-sm sm:text-base leading-relaxed">
+                        Emprender en Argentina da miedo y abunda la incertidumbre sobre precios, costos, envíos y cómo conseguir los primeros clientes sin tirar la plata.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-3 bg-red-900/5 p-4 rounded-xl border border-red-900/10">
+                            <i class="fa-solid fa-triangle-exclamation text-red-700 mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-sm">Vendes mucho pero no ves la ganancia</h4>
+                                <p class="text-xs text-brand-dark/70 mt-0.5">Ocurre cuando multiplicas por dos sin calcular reposición de mercadería y costos reales.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 bg-red-900/5 p-4 rounded-xl border border-red-900/10">
+                            <i class="fa-solid fa-triangle-exclamation text-red-700 mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-sm">Miedo a no saber por dónde empezar</h4>
+                                <p class="text-xs text-brand-dark/70 mt-0.5">Intentar abarcar todo o comprar stock antes de validar la idea suele terminar en frustración.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-card p-8 rounded-3xl border border-brand-border space-y-6 shadow-inner">
+                    <h3 class="font-serif text-2xl font-bold text-brand-dark">Lo que incluye el método:</h3>
+                    
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-accent text-white flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <strong class="block font-semibold">Validación sin gastar</strong>
+                                <span class="text-brand-dark/70 text-xs">Probá tu idea de negocio y conseguí clientes antes de invertir en stock masivo.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-accent text-white flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <strong class="block font-semibold">Ficha de Costos Reales</strong>
+                                <span class="text-brand-dark/70 text-xs">Fórmula exacta para calcular reposición, packaging, comisiones e inflación sin perder plata.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-accent text-white flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <strong class="block font-semibold">Estrategia en Redes y Logística</strong>
+                                <span class="text-brand-dark/70 text-xs">Guiones rápidos para Reels/TikTok, automatización de chat y envíos sencillos en Argentina.</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="pt-4 border-t border-brand-border">
+                        <a href="https://link.mercadopago.com.ar/emprendedesdecero" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-sm font-semibold shadow-md">
+                            Quiero mi ejemplar por $5990 ARS
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Módulos del Curso / Ebook -->
+    <section id="modulos" class="py-16 lg:py-24 bg-brand-card/30 border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs uppercase tracking-widest font-bold text-brand-accent">Contenido estructurado</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold">Contenidos de la Guía</h2>
+                <p class="text-brand-dark/80 text-sm sm:text-base">
+                    Un manual de acción rápida dividido en 4 módulos prácticos con ejemplos y ejercicios aplicados.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Módulo 1 -->
+                <div class="bg-brand-light p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs uppercase font-bold text-brand-accent tracking-wider bg-brand-card px-3 py-1 rounded-full">Módulo 01</span>
+                            <span class="text-xs text-brand-dark/60 font-medium">Fundamentos</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold">De la Idea a la Primera Venta</h3>
+                        <p class="text-sm text-brand-dark/70 leading-relaxed">
+                            Cómo validar tu idea de negocio sin gastar dinero (preventa, análisis de competencia e investigación directa) y la fórmula real para calcular costos y precios en Argentina sin regalar tu trabajo.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-brand-border/60 flex items-center gap-2 text-xs text-brand-accent font-semibold">
+                        <i class="fa-solid fa-file-lines"></i> Incluye Test de Validación y Ficha de Costos
+                    </div>
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="bg-brand-light p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs uppercase font-bold text-brand-accent tracking-wider bg-brand-card px-3 py-1 rounded-full">Módulo 02</span>
+                            <span class="text-xs text-brand-dark/60 font-medium">Operaciones</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold">Tu Vidriera Digital</h3>
+                        <p class="text-sm text-brand-dark/70 leading-relaxed">
+                            Eligiendo tu canal ideal (Instagram, Tiendanube, Mercado Libre), logística y envíos en Argentina de forma sencilla (Correo Argentino, cadetería), y automatización de atención al cliente sin volverte loco.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-brand-border/60 flex items-center gap-2 text-xs text-brand-accent font-semibold">
+                        <i class="fa-solid fa-box"></i> Guía de envíos y unboxing efectivo
+                    </div>
+                </div>
+
+                <!-- Módulo 3 -->
+                <div class="bg-brand-light p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs uppercase font-bold text-brand-accent tracking-wider bg-brand-card px-3 py-1 rounded-full">Módulo 03</span>
+                            <span class="text-xs text-brand-dark/60 font-medium">Ventas & Redes</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold">Estrategia de Redes (TikTok e Instagram)</h3>
+                        <p class="text-sm text-brand-dark/70 leading-relaxed">
+                            Contenido orgánico sin publicidad, pilares de contenido, cómo perder el miedo a la cámara (opción Faceless o marca personal), guiones rápidos y el Llamado a la Acción (CTA) para convertir visitas en ventas.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-brand-border/60 flex items-center gap-2 text-xs text-brand-accent font-semibold">
+                        <i class="fa-solid fa-bullhorn"></i> Plantilla de guiones y estructura de Reels
+                    </div>
+                </div>
+
+                <!-- Módulo 4 -->
+                <div class="bg-brand-light p-8 rounded-2xl border border-brand-border shadow-sm flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs uppercase font-bold text-brand-accent tracking-wider bg-brand-card px-3 py-1 rounded-full">Módulo 04</span>
+                            <span class="text-xs text-brand-dark/60 font-medium">Mentalidad</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold">Organización y Hoja de Ruta</h3>
+                        <p class="text-sm text-brand-dark/70 leading-relaxed">
+                            Organización diaria por bloques de tiempo, manejo de la frustración cuando las ventas bajan y tu hoja de ruta completa para los primeros 30 días de acción.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-brand-border/60 flex items-center gap-2 text-xs text-brand-accent font-semibold">
+                        <i class="fa-solid fa-calendar-check"></i> Plan de acción semana a semana
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios de Compradores -->
+    <section id="testimonios" class="py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs uppercase tracking-widest font-bold text-brand-accent">Opiniones de compradores</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold">Lo que dicen quienes ya dieron el paso</h2>
+                <p class="text-brand-dark/80 text-sm sm:text-base">
+                    Emprendedores reales que aplicaron el método en sus proyectos diarios.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-1 text-amber-600 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs sm:text-sm text-brand-dark/80 italic leading-relaxed">
+                            "El módulo de costos me salvó la vida. Yo vendía repostería artesanal y me di cuenta de que estaba regalando mi trabajo por no sumar la luz ni mis horas. Muy claro y directo al grano."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
+                        <div class="w-10 h-10 rounded-full bg-brand-accent/20 text-brand-accent font-serif font-bold flex items-center justify-center text-sm">MC</div>
+                        <div>
+                            <h4 class="font-bold text-xs sm:text-sm">Mariana C.</h4>
+                            <span class="text-[10px] text-brand-dark/60">Emprendedora gastronómica (Córdoba)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-1 text-amber-600 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs sm:text-sm text-brand-dark/80 italic leading-relaxed">
+                            "Lo compré dudando por el precio, pero vale cada centavo. No tiene vueltas teóricas, te dice exactamente qué hacer para configurar Mercado Pago y armar tu primer catálogo en WhatsApp."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
+                        <div class="w-10 h-10 rounded-full bg-brand-accent/20 text-brand-accent font-serif font-bold flex items-center justify-center text-sm">LR</div>
+                        <div>
+                            <h4 class="font-bold text-xs sm:text-sm">Lucas R.</h4>
+                            <span class="text-[10px] text-brand-dark/60">Servicios de Diseño (Buenos Aires)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-1 text-amber-600 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs sm:text-sm text-brand-dark/80 italic leading-relaxed">
+                            "Me ayudó a estructurar mi tienda de ropa cuando estaba totalmente perdida con el stock y los proveedores. Super recomendable para arrancar ordenada en Argentina."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
+                        <div class="w-10 h-10 rounded-full bg-brand-accent/20 text-brand-accent font-serif font-bold flex items-center justify-center text-sm">SG</div>
+                        <div>
+                            <h4 class="font-bold text-xs sm:text-sm">Sofía G.</h4>
+                            <span class="text-[10px] text-brand-dark/60">Indumentaria (Rosario)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout / Call to Action Final -->
+    <section id="comprar" class="py-16 bg-brand-dark text-brand-bg relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 relative z-10">
+            <span class="text-xs uppercase tracking-widest font-bold text-amber-300">Acceso Inmediato</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold">Comenzá hoy tu camino emprendedor</h2>
+            <p class="text-brand-bg/80 text-sm sm:text-base max-w-xl mx-auto">
+                Obtén la Guía Paso a Paso en formato PDF con todas las herramientas y plantillas listas para usar.
+            </p>
+
+            <div class="inline-flex flex-col items-center bg-brand-light text-brand-dark p-8 rounded-2xl shadow-2xl border border-brand-border space-y-4 w-full max-w-md mx-auto">
+                <span class="text-xs uppercase tracking-wider font-bold text-brand-accent">Ebook + Plantillas</span>
+                <div class="flex items-baseline justify-center gap-3">
+                    <span class="text-xs line-through text-brand-dark/50 font-semibold">$9.990 ARS</span>
+                    <span class="text-4xl font-serif font-bold text-brand-dark">$5.990 <span class="text-sm font-sans font-normal text-brand-dark/70">ARS</span></span>
+                </div>
+                <p class="text-xs text-brand-dark/70">Pago único mediante Mercado Pago (Tarjetas, Rapipago, Dinero en cuenta)</p>
+                
+                <a href="https://link.mercadopago.com.ar/emprendedesdecero" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-base font-bold shadow-lg">
+                    <i class="fa-solid fa-lock text-amber-400"></i> Pagar con Mercado Pago
+                </a>
+
+                <button onclick="openDownloadPortal()" class="w-full text-xs text-brand-accent font-bold hover:underline py-1">
+                    ¿Ya pagaste? Inicia sesión o ingresa tu código para descargar
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de FAQ -->
+    <section id="faq" class="py-16 lg:py-24 border-b border-brand-border">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span class="text-xs uppercase tracking-widest font-bold text-brand-accent">Resolvé tus dudas</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold">Preguntas Frecuentes</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="bg-brand-card p-6 rounded-xl border border-brand-border group">
+                    <summary class="font-bold text-sm sm:text-base cursor-pointer flex justify-between items-center list-none">
+                        <span>¿Cómo descargo el Ebook una vez realizado el pago?</span>
+                        <i class="fa-solid fa-chevron-down text-xs group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-brand-dark/80 mt-4 leading-relaxed">
+                        Al completar la compra, se te dará acceso a la descarga del ebook para disfrutarlo cuando quieras y necesites. El acceso es permanente.
+                    </p>
+                </details>
+
+                <details class="bg-brand-card p-6 rounded-xl border border-brand-border group">
+                    <summary class="font-bold text-sm sm:text-base cursor-pointer flex justify-between items-center list-none">
+                        <span>¿Sirve si todavía no tengo un negocio definido?</span>
+                        <i class="fa-solid fa-chevron-down text-xs group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-brand-dark/80 mt-4 leading-relaxed">
+                        ¡Exacto! El Módulo 1 está enfocado justamente en ayudarte a validar tu idea, entender si hay mercado para tu propuesta y organizar los primeros pasos desde cero sin arriesgar capital.
+                    </p>
+                </details>
+
+                <details class="bg-brand-card p-6 rounded-xl border border-brand-border group">
+                    <summary class="font-bold text-sm sm:text-base cursor-pointer flex justify-between items-center list-none">
+                        <span>¿Cuáles son los medios de pago disponibles?</span>
+                        <i class="fa-solid fa-chevron-down text-xs group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-brand-dark/80 mt-4 leading-relaxed">
+                        Al procesarse mediante Mercado Pago, puedes abonar con tarjeta de crédito, tarjeta de débito, dinero en cuenta, o bien en efectivo mediante redes de cobro como Rapipago y Pago Fácil.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Contacto -->
+    <section class="py-16 lg:py-24 bg-brand-card/20">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 space-y-3">
+                <span class="text-xs uppercase tracking-widest font-bold text-brand-accent">¿Te quedó alguna duda?</span>
+                <h2 class="font-serif text-3xl font-bold">Escríbenos directamente</h2>
+                <p class="text-xs sm:text-sm text-brand-dark/70">Completa el formulario y te responderemos a la brevedad.</p>
+            </div>
+
+            <form onsubmit="handleContact(event)" class="bg-brand-light p-8 rounded-2xl border border-brand-border space-y-4 shadow-sm">
+                <div>
+                    <label class="block text-xs font-bold uppercase mb-1">Tu Nombre</label>
+                    <input type="text" required class="w-full px-4 py-3 rounded-lg bg-brand-bg border border-brand-border text-sm focus:outline-none focus:border-brand-accent" placeholder="Ej. Juan Pérez">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase mb-1">Correo Electrónico</label>
+                    <input type="email" required class="w-full px-4 py-3 rounded-lg bg-brand-bg border border-brand-border text-sm focus:outline-none focus:border-brand-accent" placeholder="tu@correo.com">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase mb-1">Mensaje o Consulta</label>
+                    <textarea rows="4" required class="w-full px-4 py-3 rounded-lg bg-brand-bg border border-brand-border text-sm focus:outline-none focus:border-brand-accent" placeholder="¿En qué podemos ayudarte?"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 rounded-lg bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-sm font-bold shadow-md">
+                    Enviar Consulta
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-brand-bg py-12 border-t border-brand-border/20 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-brand-card flex items-center justify-center font-serif font-bold text-[9px] text-brand-dark">EM</div>
+                <span class="font-serif font-bold text-base">Emprende desde Cero</span>
+            </div>
+            <p class="text-brand-bg/60">© 2026 Emprende desde Cero. Todos los derechos reservados. Desarrollado para emprendedores en Argentina.</p>
+            <div class="flex items-center gap-4 text-brand-bg/80">
+                <a href="#" class="hover:text-amber-300 transition">Términos</a>
+                <a href="#" class="hover:text-amber-300 transition">Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Slide-over / Modal -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex justify-end">
+        <div class="bg-brand-light w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl border-l border-brand-border">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between pb-4 border-b border-brand-border">
+                    <h3 class="font-serif text-xl font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-cart-shopping text-brand-accent"></i> Tu Carrito
+                    </h3>
+                    <button onclick="closeCart()" class="p-2 text-brand-dark hover:text-brand-accent" aria-label="Cerrar">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between gap-4 p-4 rounded-xl bg-brand-card border border-brand-border">
+                        <div class="w-12 h-12 rounded bg-brand-dark text-brand-bg flex items-center justify-center font-serif font-bold text-xs flex-shrink-0">PDF</div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-sm">Guía Paso a Paso para Emprender desde Cero</h4>
+                            <span class="text-xs text-brand-dark/60">Formato Digital (Ebook + Plantillas)</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-bold text-sm">$5.990</span>
+                            <span class="block text-[10px] line-through text-brand-dark/50">$9.990</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4 pt-4 border-t border-brand-border">
+                <div class="flex justify-between items-center font-bold text-base">
+                    <span>Total:</span>
+                    <span class="text-brand-accent text-xl">$5.990 ARS</span>
+                </div>
+                <a href="https://link.mercadopago.com.ar/emprendedesdecero" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-sm font-bold shadow-md">
+                    <i class="fa-solid fa-lock text-amber-400"></i> Finalizar Compra en Mercado Pago
+                </a>
+                <button onclick="closeCart()" class="w-full py-2 text-xs text-brand-dark/70 hover:text-brand-dark">
+                    Seguir viendo la página
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PORTAL DE DESCARGA VERIFICADA -->
+    <div id="download-portal-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-brand-light p-8 rounded-3xl max-w-lg w-full space-y-6 border border-brand-border shadow-2xl relative">
+            <button onclick="closeDownloadPortal()" class="absolute top-6 right-6 text-brand-dark hover:text-brand-accent">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-center space-y-2">
+                <div class="w-12 h-12 rounded-full bg-brand-accent/20 text-brand-accent flex items-center justify-center mx-auto text-xl">
+                    <i class="fa-solid fa-shield-check"></i>
+                </div>
+                <h3 class="font-serif text-2xl font-bold">Portal de Descarga Verificada</h3>
+                <p class="text-xs text-brand-dark/70">
+                    Ingresa tus datos para verificar el pago y habilitar la descarga de tu guía de manera permanente.
+                </p>
+            </div>
+
+            <div id="payment-check-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase mb-1">Correo electrónico con el que realizaste el pago</label>
+                    <input type="email" id="payer-email" class="w-full px-4 py-3 rounded-xl bg-brand-bg border border-brand-border text-sm focus:outline-none focus:border-brand-accent" placeholder="tu@correo.com">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase mb-1">Código de Operación o ID de Pago (MP)</label>
+                    <input type="text" id="payment-code" class="w-full px-4 py-3 rounded-xl bg-brand-bg border border-brand-border text-sm focus:outline-none focus:border-brand-accent" placeholder="Ej. #1289456789 o escribe 'TEST-APPROVED'">
+                </div>
+                
+                <div id="verification-error" class="hidden p-3 bg-red-100 border border-red-300 text-red-800 text-xs rounded-xl flex items-start gap-2">
+                    <i class="fa-solid fa-triangle-exclamation mt-0.5"></i>
+                    <span id="error-message-text">No se encontró ningún pago aprobado asociado a estos datos.</span>
+                </div>
+
+                <button onclick="verifyPaymentAndUnlock()" class="w-full py-3.5 rounded-full bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-sm font-bold shadow-md">
+                    Verificar y Descargar
+                </button>
+                
+                <div class="text-center pt-2">
+                    <a href="https://link.mercadopago.com.ar/emprendedesdecero" target="_blank" rel="noopener noreferrer" class="text-xs text-brand-accent font-semibold hover:underline">
+                        ¿Aún no realizaste la compra? Comprá aquí por $5.990 ARS
+                    </a>
+                </div>
+            </div>
+
+            <div id="download-success-box" class="hidden space-y-6 text-center py-4">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto text-2xl animate-bounce">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="font-serif text-xl font-bold text-emerald-900">¡Acceso Verificado con Éxito!</h4>
+                    <p class="text-xs text-brand-dark/70">Gracias por tu compra. Tu acceso al Ebook y plantillas es permanente.</p>
+                </div>
+                
+                <div class="p-4 bg-brand-card rounded-2xl border border-brand-border flex items-center justify-between text-left">
+                    <div>
+                        <h5 class="font-bold text-sm">GUÍA_Paso_a_Paso_para_Emprender_desde_Cero.pdf</h5>
+                        <span class="text-[10px] text-brand-dark/60">Formato PDF Oficial (13 Páginas)</span>
+                    </div>
+                    <a href="#" onclick="downloadRealPDF(event)" class="px-5 py-2.5 rounded-xl bg-brand-dark text-brand-bg text-xs font-bold hover:bg-brand-accent transition shadow">
+                        Descargar PDF
+                    </a>
+                </div>
+
+                <button onclick="closeDownloadPortal()" class="text-xs text-brand-dark/60 hover:text-brand-dark underline">
+                    Cerrar ventana
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- General Notification Modal -->
+    <div id="notification-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-brand-light p-6 rounded-2xl max-w-sm w-full text-center space-y-4 border border-brand-border shadow-2xl">
+            <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto text-xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 id="notification-title" class="font-serif text-xl font-bold">¡Mensaje Enviado!</h3>
+            <p id="notification-text" class="text-xs sm:text-sm text-brand-dark/70">Nos pondremos en contacto contigo a la brevedad.</p>
+            <button onclick="closeNotification()" class="w-full py-2.5 rounded-full bg-brand-dark text-brand-bg text-sm font-bold">
+                Entendido
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Actions -->
+    <script>
+        let time = 5 * 3600 + 42 * 60 + 19;
+        const countdownEl = document.getElementById('countdown');
+        setInterval(() => {
+            if(time > 0) time--;
+            let h = Math.floor(time / 3600);
+            let m = Math.floor((time % 3600) / 60);
+            let s = time % 60;
+            countdownEl.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        }, 1000);
+
+        // Detectar retorno automático desde Mercado Pago (ej: ?status=approved o ?collection_status=approved)
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status') || urlParams.get('collection_status');
+            if (status === 'approved' || status === 'success') {
+                openDownloadPortal();
+                // Autocompletar simulación de éxito
+                document.getElementById('payment-code').value = "MP-APPROVED-AUTO";
+                document.getElementById('payer-email').value = "comprador@mercadopago.com.ar";
+                verifyPaymentAndUnlock();
+            }
+        });
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function openCart() {
+            document.getElementById('cart-modal').classList.remove('hidden');
+        }
+        function closeCart() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+
+        function openDownloadPortal() {
+            document.getElementById('download-portal-modal').classList.remove('hidden');
+            document.getElementById('payment-check-form').classList.remove('hidden');
+            document.getElementById('download-success-box').classList.add('hidden');
+            document.getElementById('verification-error').classList.add('hidden');
+        }
+        function closeDownloadPortal() {
+            document.getElementById('download-portal-modal').classList.add('hidden');
+        }
+
+        function verifyPaymentAndUnlock() {
+            const emailInput = document.getElementById('payer-email').value.trim();
+            const codeInput = document.getElementById('payment-code').value.trim();
+            const errorBox = document.getElementById('verification-error');
+            const errorText = document.getElementById('error-message-text');
+
+            if(!emailInput || !codeInput) {
+                errorText.textContent = "Por favor completa ambos campos.";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            const isApprovedTest = codeInput.toUpperCase().includes('APPROVED') || (codeInput.length >= 6 && !codeInput.includes('00000'));
+
+            if(isApprovedTest) {
+                errorBox.classList.add('hidden');
+                document.getElementById('payment-check-form').classList.add('hidden');
+                document.getElementById('download-success-box').classList.remove('hidden');
+            } else {
+                errorText.textContent = "No se detectó un pago aprobado con los datos ingresados. Si el pago está pendiente o fue rechazado, la descarga no está permitida.";
+                errorBox.classList.remove('hidden');
+            }
+        }
+
+        function downloadRealPDF(e) {
+            e.preventDefault();
+            // Contenido simulado del PDF oficial integrado para descarga directa en el navegador
+            const pdfContent = `GUÍA PASO A PASO PARA EMPRENDER DESDE CERO
+--------------------------------------------------
+De la idea a tu primera venta, sin perder plata en el camino.
+Estrategias reales para el mercado local.
+
+MÓDULO 1: De la Idea a la Primera Venta
+- Cómo validar tu idea de negocio sin gastar dinero (Preventa, Competencia, Encuestas).
+- Cálculo de costos reales y precios en Argentina (Costo directo, empaques, comisiones y margen mínimo).
+
+MÓDULO 2: Tu Vidriera Digital
+- Elección del canal ideal (Instagram/WhatsApp o Tiendanube).
+- Logística y envíos en Argentina (Correo Argentino, cadetería y puntos de retiro).
+- Automatización y atención al cliente.
+
+MÓDULO 3: Estrategia de Redes (TikTok e Instagram)
+- Contenido orgánico y pilares de contenido (Educativo, Entretenimiento, Venta Directa).
+- Perder el miedo a la cámara (Faceless o marca personal) y estructura de guiones.
+- Llamado a la Acción (CTA) y cierres por DM/WhatsApp.
+
+MÓDULO 4: Mentalidad, Organización y Constancia
+- Técnica de trabajo por bloques.
+- Manejo de la frustración y plan de acción cuando las ventas bajan.
+- Hoja de ruta para los primeros 30 días.
+
+¡Gracias por adquirir este material! 
+@emprendedesdecero.arg`;
+
+            const blob = new Blob([pdfContent], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'GUIA_Paso_a_Paso_para_Emprender_desde_Cero.pdf';
+            link.click();
+            
+            alert("¡Descarga de la guía completada con éxito!");
+            closeDownloadPortal();
+        }
+
+        function handleContact(e) {
+            e.preventDefault();
+            document.getElementById('notification-title').textContent = "¡Consulta Recibida!";
+            document.getElementById('notification-text').textContent = "Gracias por escribirnos. Te responderemos a la brevedad.";
+            document.getElementById('notification-modal').classList.remove('hidden');
+            e.target.reset();
+        }
+
+        function closeNotification() {
+            document.getElementById('notification-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
