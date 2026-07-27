@@ -80,7 +80,7 @@
                     <i class="fa-solid fa-cart-shopping text-xl"></i>
                     <span class="absolute -top-1 -right-1 bg-brand-accent text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">1</span>
                 </button>
-                <a href="https://mpago.la/1atSDgp" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-sm font-semibold shadow-md">
+                <a href="https://link.mercadopago.com.ar/emprendedesdecero" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-sm font-semibold shadow-md">
                     Comprar Ebook
                 </a>
                 <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-brand-dark" aria-label="Menú">
@@ -115,7 +115,7 @@
                     </p>
                     
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                        <a href="https://mpago.la/1atSDgp" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-base font-bold shadow-xl transform hover:-translate-y-0.5">
+                        <a href="https://link.mercadopago.com.ar/emprendedesdecero" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-brand-dark text-brand-bg hover:bg-brand-accent transition text-base font-bold shadow-xl transform hover:-translate-y-0.5">
                             <i class="fa-solid fa-lock text-amber-400"></i> Comprar Ahora por $5990 ARS
                         </a>
                         <div class="text-center sm:text-left">
@@ -661,14 +661,19 @@
                     <p class="text-xs text-brand-dark/70">Gracias por tu compra. Tu acceso al Ebook y plantillas es permanente.</p>
                 </div>
                 
-                <div class="p-4 bg-brand-card rounded-2xl border border-brand-border flex items-center justify-between text-left">
+                <div class="p-4 bg-brand-card rounded-2xl border border-brand-border flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
                     <div>
                         <h5 class="font-bold text-sm">GUÍA_Paso_a_Paso_para_Emprender_desde_Cero.pdf</h5>
-                        <span class="text-[10px] text-brand-dark/60">Formato PDF Oficial (13 Páginas)</span>
+                        <span class="text-[10px] text-brand-dark/60">Formato PDF Oficial (Google Drive)</span>
                     </div>
-                    <a href="#" onclick="downloadRealPDF(event)" class="px-5 py-2.5 rounded-xl bg-brand-dark text-brand-bg text-xs font-bold hover:bg-brand-accent transition shadow">
-                        Descargar PDF
-                    </a>
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <a href="https://drive.google.com/uc?export=download&id=14gvNyWUUYSH5I1nh2d5AO0dVCpLtNJMV" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-brand-dark text-brand-bg text-xs font-bold hover:bg-brand-accent transition shadow text-center inline-flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-download"></i> Descargar
+                        </a>
+                        <a href="https://drive.google.com/file/d/14gvNyWUUYSH5I1nh2d5AO0dVCpLtNJMV/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="px-3 py-2.5 rounded-xl border border-brand-dark/20 text-brand-dark text-xs font-semibold hover:bg-brand-bg transition text-center" title="Abrir en Google Drive">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <button onclick="closeDownloadPortal()" class="text-xs text-brand-dark/60 hover:text-brand-dark underline">
@@ -766,41 +771,8 @@
         }
 
         function downloadRealPDF(e) {
-            e.preventDefault();
-            const pdfContent = `GUÍA PASO A PASO PARA EMPRENDER DESDE CERO
---------------------------------------------------
-De la idea a tu primera venta, sin perder plata en el camino.
-Estrategias reales para el mercado local.
-
-MÓDULO 1: De la Idea a la Primera Venta
-- Cómo validar tu idea de negocio sin gastar dinero (Preventa, Competencia, Encuestas).
-- Cálculo de costos reales y precios en Argentina (Costo directo, empaques, comisiones y margen mínimo).
-
-MÓDULO 2: Tu Vidriera Digital
-- Elección del canal ideal (Instagram/WhatsApp o Tiendanube).
-- Logística y envíos en Argentina (Correo Argentino, cadetería y puntos de retiro).
-- Automatización y atención al cliente.
-
-MÓDULO 3: Estrategia de Redes (TikTok e Instagram)
-- Contenido orgánico y pilares de contenido (Educativo, Entretenimiento, Venta Directa).
-- Perder el miedo a la cámara (Faceless o marca personal) y estructura de guiones.
-- Llamado a la Acción (CTA) y cierres por DM/WhatsApp.
-
-MÓDULO 4: Mentalidad, Organización y Constancia
-- Técnica de trabajo por bloques.
-- Manejo de la frustración y plan de acción cuando las ventas bajan.
-- Hoja de ruta para los primeros 30 días.
-
-¡Gracias por adquirir este material! 
-@emprendedesdecero.arg`;
-
-            const blob = new Blob([pdfContent], { type: 'application/pdf' });
-            const link = document.createElement('a');
-            link.href = window.URL.createObjectURL(blob);
-            link.download = 'GUIA_Paso_a_Paso_para_Emprender_desde_Cero.pdf';
-            link.click();
-            
-            closeDownloadPortal();
+            if (e) e.preventDefault();
+            window.open('https://drive.google.com/uc?export=download&id=14gvNyWUUYSH5I1nh2d5AO0dVCpLtNJMV', '_blank');
         }
 
         function handleContact(e) {
