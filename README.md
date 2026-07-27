@@ -1,5 +1,4 @@
 # candeluque10-prog.github.io
-<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
